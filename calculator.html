@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .calculator {
+            
+            width: 300px;
+            height: 370px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            padding: 10px;
+        }
+        .number {
+            width: 90px;
+            height: 30px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .number:hover {
+            background-color: #ccc;
+        }
+        #display{
+            width: 280px;
+            height: 30px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            padding: 10px;
+            text-align: right;
+            margin-bottom: 15px;
+        }
+        .keys{
+            width: 280px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .plus{
+            background-color: green;
+            color: white;
+            font-weight: bold;
+        }
+        .minus{
+            background-color: red;
+            color: white;
+            font-weight: bold;
+        }
+        .multiply{
+            background-color: blue;
+            color: white;
+            font-weight: bold;
+        }
+        .divide{
+            background-color: yellow;
+            color: white;
+            font-weight: bold;
+        }
+        .equal{
+            background-color: #ccc;
+            color: white;
+            font-weight: bold;
+        }
+        h2{
+            margin-top: 0px;
+            text-align: center;
+        }
+        .clear-title{
+            display: flex;
+            flex-direction: row;
+            padding-left:auto;
+            margin-right:0px;
+        }
+        .operator{
+            width: 90px;
+            height: 30px;
+            border: 1px solid #ccc;
+            margin: 0 auto;
+            padding: 10px;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h2>Calculator</h2>
+         <div class="calculator-display">
+             <input type="text" id="display" value="0">
+             
+         </div>
+         <div class="keys">
+                <button class="number" id="1">1</button>
+                <button class="number" id="2">2</button>
+                <button class="number" id="3">3</button>
+                <button class="number" id="4">4</button>
+                <button class="number" id="5">5</button>
+                <button class="number" id="6">6</button>
+                <button class="number" id="7">7</button>
+                <button class="number" id="8">8</button>
+                <button class="number" id="9">9</button>
+                <button class="number" id=".">.</button>
+                <button class="number" id="0">0</button>
+                <button class="number plus" id="+">+</button>
+                <button class="number minus" id="-">-</button>
+                <button class="number product" id="*">*</button>
+                <button class="number divide" id="/">/</button>
+                <button class="operator" id="ce">CE</button>
+                <button class="operator" id="clear">C</button>
+                <button class="number" id="=">=</button>
+         </div>
+    </div>
+    <script>
+
+        var display = document.getElementById('display');
+        var number = document.getElementsByClassName('number');
+        var plus = document.getElementsByClassName('plus');
+        var minus = document.getElementsByClassName('minus');
+        var product = document.getElementsByClassName('product');
+        var divide = document.getElementsByClassName('divide');
+        var equal = document.getElementById('=');
+        var clear = document.getElementById('clear');
+        var ce = document.getElementById('ce');
+        var result = 0;
+
+        for(var i = 0; i < number.length; i++){
+            number[i].addEventListener('click', function(){
+                console.log(this.id);
+                if(display.value == 0){
+                    display.value = this.id;
+                }
+                else{
+                    display.value += this.id;
+                }
+            });
+        }
+
+
+        equal.addEventListener('click', function(){
+            res = display.value;
+            console.log(res);
+            result += eval(res.substring(0,res.length-1));
+            display.value = result;
+        });
+
+        clear.addEventListener('click', function(){
+            display.value = 0;
+        });
+        ce.addEventListener('click', function(){
+            display.value = 0;
+        });
+
+
+    </script>
+</body>
+</html>
